@@ -29,7 +29,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->intended('/')->with('success','Login successfull!! Welcome, '.Auth::user()->name);
         }
 
         return back()->with('loginError', 'Invalid Login, please try again!!!');
